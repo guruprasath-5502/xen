@@ -13,13 +13,15 @@ const MONGO_URI =
 mongoose
   .connect(MONGO_URI)
   .then(() => {
-    app.get("/", (req, res) => {
-      res.send("HELLO");
-     });
+      app.listen(PORT, () => {
+        console.log("connected successfully!")
+      });
   })
   .catch((err) => {
     console.log(err);
   });
 
-
+ app.get("/", (req, res) => {
+      res.send("HELLO");
+     });
 app.use("/users", userRoutes);
